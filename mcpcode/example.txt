@@ -1,0 +1,36 @@
+ChromaDB ADK Agent is ready. Type 'exit' to quit.
+
+You: Please create a collection called 'my_documents'.
+Agent: Call to tool 'chroma_create_collection' with arguments: {'collection_name': 'my_documents'}
+Agent: {'success': True, 'message': "Collection 'my_documents' created successfully."}
+
+You: Add a document about "The quick brown fox jumps over the lazy dog" to 'my_documents' with id 'fox_doc'.
+Agent: Call to tool 'chroma_add_documents' with arguments: {'collection_name': 'my_documents', 'documents': ['The quick brown fox jumps over the lazy dog'], 'ids': ['fox_doc']}
+Agent: {'success': True, 'message': "Added 1 documents to 'my_documents'."}
+
+You: Add another document to 'my_documents' about "Cats love to sleep all day long." with id 'cat_doc'.
+Agent: Call to tool 'chroma_add_documents' with arguments: {'collection_name': 'my_documents', 'documents': ['Cats love to sleep all day long.'], 'ids': ['cat_doc']}
+Agent: {'success': True, 'message': "Added 1 documents to 'my_documents'."}
+
+You: What are some documents related to animals?
+Agent: Call to tool 'chroma_query_documents' with arguments: {'collection_name': 'my_documents', 'query_texts': ['animals'], 'n_results': 5}
+Agent: {'documents': [['The quick brown fox jumps over the lazy dog'], ['Cats love to sleep all day long.']], 'ids': [['fox_doc'], ['cat_doc']], 'metadatas': [[None], [None]], 'distances': [[0.987654321], [1.23456789]]}
+
+You: Delete the collection 'my_documents'.
+Agent: Call to tool 'chroma_delete_collection' with arguments: {'collection_name': 'my_documents'}
+Agent: {'success': True, 'message': "Collection 'my_documents' deleted successfully."}
+
+You: exit
+
+
+pip install \
+    "protobuf==3.20.3"\
+    google-adk \
+    mcp \
+    chromadb \
+    fastapi \
+    uvicorn \
+    python-dotenv \
+    pydantic \
+    litellm \
+    httpx
